@@ -43,7 +43,7 @@ Ensure you have the following installed:
 
 To set up the project, install all dependencies by running `npm install` from the root directory. This command will install dependencies for both `frontend` and `backend` automatically:
 
-    `npm install`
+    npm install
 
 > **Note**: If you encounter errors with `npm install` in the root, try running `npm install` from the `frontend` and `backend` directories individually to install dependencies for each part separately.
 
@@ -58,21 +58,21 @@ The root `package.json` includes scripts to help you start both the frontend and
 
 *   **Install Dependencies**: Installs all dependencies in `frontend` and `backend` folders from the root.
     
-         `npm install`
+         npm install
     
 *   **Start Both Frontend and Backend**: Starts both the React app and the Node.js server concurrently.
       
-          `npm start`
+          npm start
     
     *   **React (Frontend)** runs on `http://localhost:3000`
     *   **Express (Backend)** runs on `http://localhost:5000`
 *   **Run Backend Only**:
       
-          `npm run server`
+          npm run server
     
 *   **Run Frontend Only**:
         
-        `npm run client`
+        npm run client
     
 
 * * *
