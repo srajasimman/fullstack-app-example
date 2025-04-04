@@ -1,9 +1,9 @@
 services:
   frontend:
+    image: srajasimman/fullstack-app-frontend:latest
     build: 
       context: ./frontend
       args:
-        - NODE_ENV=development
         - APP_BACKEND_HOST=backend:5000
     ports:
       - "8080:8080"
@@ -11,6 +11,7 @@ services:
       - backend
 
   backend:
+    image: srajasimman/fullstack-app-backend:latest
     build: 
       context: ./backend
     ports:

@@ -1,9 +1,8 @@
 FROM node:18-alpine AS builder
+
 ARG APP_BACKEND_HOST
-ARG APP_ENV
 ENV APP_BACKEND_HOST=$APP_BACKEND_HOST
-ENV APP_ENV=$APP_ENV
-ENV NODE_ENV=production
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
