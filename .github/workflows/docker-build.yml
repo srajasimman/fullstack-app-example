@@ -2,7 +2,7 @@ name: Build and Push Docker images
 
 on:
   push:
-    branches: [ main ]
+    tags: [ v*.*.* ]
   pull_request:
     branches: [ main ]
 
@@ -27,7 +27,9 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/bake-action@v6
         with:
-          files: ./docker-bake.hcl
           targets: |
             ${{ matrix.target }}
+          files: ./docker-bake.hcl
+          set: |
+            target.args.VERSION=${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
           push: true

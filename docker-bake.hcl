@@ -6,11 +6,7 @@ variable "APP_BACKEND_HOST" {
   default = "backend:5000"
 }
 
-variable "FRONTEND_VERSION" {
-  default = "latest"
-}
-
-variable "BACKEND_VERSION" {
+variable "VERSION" {
   default = "latest"
 }
 
@@ -21,7 +17,7 @@ group "default" {
 target "backend" {
   context = "./backend"
   dockerfile = "./Dockerfile"
-  tags = ["${REGISTRY_REPO}/fullstack-app-backend:latest"]
+  tags = ["${REGISTRY_REPO}/fullstack-app-backend:${VERSION}"]
 }
 
 target "frontend" {
@@ -30,5 +26,5 @@ target "frontend" {
   args = {
     APP_BACKEND_HOST = "${APP_BACKEND_HOST}"
   }
-  tags = ["${REGISTRY_REPO}/fullstack-app-frontend:${FRONTEND_VERSION}"]
+  tags = ["${REGISTRY_REPO}/fullstack-app-frontend:${VERSION}"]
 }
