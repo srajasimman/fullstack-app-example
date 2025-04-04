@@ -9,12 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        target:
-          - frontend
-          - backend
     steps:
       - uses: actions/checkout@v3
 
@@ -27,8 +21,6 @@ jobs:
       - name: Build and Push Docker image
         uses: docker/bake-action@v6
         with:
-          targets: |
-            ${{ matrix.target }}
           files: ./docker-bake.hcl
           set: |
             target.args.VERSION=${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.ref_name }}
