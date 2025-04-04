@@ -1,0 +1,18 @@
+services:
+  frontend:
+    image: srajasimman/fullstack-app-frontend:latest
+    build: 
+      context: ./frontend
+      args:
+        - APP_BACKEND_HOST=backend:5000
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+
+  backend:
+    image: srajasimman/fullstack-app-backend:latest
+    build: 
+      context: ./backend
+    ports:
+      - "5000:5000"
