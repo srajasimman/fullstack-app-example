@@ -3,9 +3,24 @@ name: Build and Push Docker images
 on:
   push:
     tags: [ v*.*.* ]
+    paths:
+      - .github/workflows/docker-build.yml
+      - 'frontend/**'
+      - 'backend/**'
+      - 'docker-bake.hcl'
+      - 'Dockerfile*'
+      - '!charts/**'
   pull_request:
     branches: [ main ]
     types: [ opened, synchronize, reopened ]
+    paths:
+      - .github/workflows/docker-build.yml
+      - 'frontend/**'
+      - 'backend/**'
+      - 'docker-bake.hcl'
+      - 'Dockerfile*'
+      - '!charts/**'
+  workflow_dispatch:
 
 env:
   REGISTRY_REPO: docker.io/${{ github.repository_owner }}
