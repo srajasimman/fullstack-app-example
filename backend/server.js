@@ -35,6 +35,12 @@ app.get('/api/project', (req, res) => {
     });
 });
 
+// Define a health check route at /healthz to check if the server is running
+app.get('/healthz', (req, res) => {
+    // Send a simple text response indicating the server is healthy
+    res.send('OK');
+});
+
 // Start the server and listen on the specified port
 app.listen(PORT, () => {
     // Log a message to indicate the server is running

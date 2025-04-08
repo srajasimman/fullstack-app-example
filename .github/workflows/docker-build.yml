@@ -26,14 +26,13 @@ jobs:
 
       - name: Get Short SHA
         id: vars
+        shell: bash
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
             echo "VERSION=$(echo ${{ github.event.pull_request.head.sha }} | cut -c1-7)" >> $GITHUB_ENV
           else
             echo "VERSION=$(echo ${{ github.ref_name }})" >> $GITHUB_ENV
           fi
-
-        shell: bash
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
